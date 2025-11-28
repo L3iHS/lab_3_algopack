@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class ListStack:
     def __init__(self) -> None:
         self._data: list[int] = []
@@ -61,7 +63,7 @@ if __name__ == "__main__":
 
 class LinkedListStack:
     class _Node:
-        def __init__(self, value: int, next: "LinkedListStack._Node" | None = None, current_min: int | None = None) -> None:
+        def __init__(self, value: int, next: LinkedListStack._Node | None = None, current_min: int | None = None) -> None:
             self.value = value
             self.next = next  # сслыка на элемент до (ниже в стеке)
             self.current_min = current_min  # локальный минимум
@@ -96,12 +98,9 @@ class LinkedListStack:
     def peek(self) -> int:
         if self.is_empty():
             raise IndexError('Стек пуст')
-        else:
-            return self._head.value
+        return self._head.value
     
     def min(self) -> int:
         if self.is_empty():
             raise IndexError('Стек пуст')
-        else:
-            return self._head.current_min
-    
+        return self._head.current_min

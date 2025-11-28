@@ -1,7 +1,7 @@
 from structures.stack import LinkedListStack
 
 
-def _test_empty_stack():
+def test_empty_stack():
     s = LinkedListStack()
     assert s.is_empty()
     assert len(s) == 0
@@ -25,7 +25,7 @@ def _test_empty_stack():
         pass
 
 
-def _test_push_pop_order_and_len():
+def test_push_pop_order_and_len():
     s = LinkedListStack()
     s.push(1)
     s.push(2)
@@ -43,7 +43,7 @@ def _test_push_pop_order_and_len():
     assert len(s) == 0
 
 
-def _test_min_behavior():
+def test_min_behavior():
     s = LinkedListStack()
     s.push(3)
     assert s.min() == 3
@@ -78,10 +78,10 @@ def _test_min_behavior():
 
 
 def _run_all_tests():
-    _test_empty_stack()
-    _test_push_pop_order_and_len()
-    _test_min_behavior()
-    print("All LinkedListStack tests passed!")
+    test_empty_stack()
+    test_push_pop_order_and_len()
+    test_min_behavior()
+    print("Все LinkedListStack тесты пройдены!")
 
 
 if __name__ == "__main__":
