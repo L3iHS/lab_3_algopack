@@ -1,4 +1,6 @@
 def factorial(n: int) -> int:
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
     if n < 0:
         raise ValueError('n должно быть не отрицательным')
     result = 1
@@ -8,14 +10,18 @@ def factorial(n: int) -> int:
 
 
 def factorial_recursive(n: int) -> int:
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
     if n < 0:
         raise ValueError('n должно быть не отрицательным')
-    if n <= 1:  # на всякий, чтобы не ушел в рекурсию
+    if n <= 1:  # "<" на всякий, чтобы не ушел в рекурсию
         return 1
     return factorial_recursive(n - 1) * n
 
 
 def fibo_1(n: int) -> int:
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
     if n < 0:
         raise ValueError('n должно быть не отрицательным')
     a, b = 0, 1
@@ -28,6 +34,8 @@ def fibo_1(n: int) -> int:
 # print(fibo_1(3))
 
 def fibo_2(n: int, memory=None) -> int:
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
     if n < 0:
         raise ValueError('n должно быть не отрицательным')
     if memory is None:
@@ -50,6 +58,8 @@ def fibo_2(n: int, memory=None) -> int:
 # или как в егэ, но тут нужен импорт
 
 def fibo_recursive(n: int) -> int:
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
     if n < 0:
         raise ValueError('n должно быть не отрицательным')
     if n <= 1:
