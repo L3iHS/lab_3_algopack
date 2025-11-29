@@ -49,26 +49,25 @@ def test_min_behavior():
     assert s.min() == 3
 
     s.push(5)
-    assert s.min() == 3  # минимум не меняется
+    assert s.min() == 3
 
     s.push(2)
-    assert s.min() == 2  # новый минимум
+    assert s.min() == 2
 
     s.push(2)
-    assert s.min() == 2  # минимум тот же
+    assert s.min() == 2
 
     s.push(4)
-    assert s.min() == 2  # 4 не влияет на минимум
+    assert s.min() == 2
 
-    # теперь начинаем pop и проверяем, как меняется минимум
     assert s.pop() == 4
     assert s.min() == 2
 
     assert s.pop() == 2
-    assert s.min() == 2  # ещё один 2 остался
+    assert s.min() == 2
 
     assert s.pop() == 2
-    assert s.min() == 3  # оба минимальных 2 ушли, минимум стал 3
+    assert s.min() == 3
 
     assert s.pop() == 5
     assert s.min() == 3
