@@ -1,4 +1,4 @@
-from structures.queue import LinkedListQueue
+from src.structures.queue import LinkedListQueue
 import pytest
 
 

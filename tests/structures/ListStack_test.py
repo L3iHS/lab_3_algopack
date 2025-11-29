@@ -1,4 +1,4 @@
-from structures.stack import ListStack
+from src.structures.stack import ListStack
 import pytest
 
 

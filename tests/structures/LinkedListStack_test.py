@@ -1,4 +1,4 @@
-from structures.stack import LinkedListStack
+from src.structures.stack import LinkedListStack
 
 
 def test_empty_stack():

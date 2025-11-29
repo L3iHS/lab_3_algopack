@@ -1,4 +1,4 @@
-from structures.queue import ListQueue  # или откуда ты её импортируешь
+from src.structures.queue import ListQueue  # или откуда ты её импортируешь
 import pytest
 
 
