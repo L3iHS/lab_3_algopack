@@ -1,3 +1,5 @@
+from src.errors import NonNumericElementError, InvalidParameterError
+
 from src.sorts.bubble_sort import bubble_sort
 
 
@@ -11,13 +13,13 @@ def bucket_sort(arr: list[float], buckets: int | None = None) -> list[float]:
     if buckets is None:
         buckets = len(a)
     elif not isinstance(buckets, int) or buckets < 1:
-        raise TypeError('buckets должен быть целым числом >= 1')
+        raise InvalidParameterError('buckets должен быть целым числом >= 1')
     
     min_value = a[0]
     max_value = a[0]
     for x in a:
         if not isinstance(x, (float, int)):
-            raise TypeError('bucket_sort принимает только числа')
+            raise NonNumericElementError('bucket_sort принимает только числа')
         if x < min_value:
             min_value = x
         if x > max_value:

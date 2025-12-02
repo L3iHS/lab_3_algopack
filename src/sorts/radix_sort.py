@@ -1,3 +1,6 @@
+from src.errors import NonIntegerArgumentError, NegativeArgumentError, InvalidParameterError
+
+
 def radix_sort(arr: list[int], base: int = 10) -> list[int]:
     """
     Работает только с неотрицательными числами
@@ -6,16 +9,16 @@ def radix_sort(arr: list[int], base: int = 10) -> list[int]:
         return arr.copy()
     
     if not isinstance(base, int) or base < 2:
-        raise ValueError("base должен быть целым числом >= 2")
+        raise InvalidParameterError("base должен быть целым числом >= 2")
 
     a = arr.copy()
 
     max_value = a[0]
     for x in a:
         if not isinstance(x, int):
-            raise TypeError('"radix_sort принимает только целые числа"')
+            raise NonIntegerArgumentError('"radix_sort принимает только целые числа"')
         if x < 0:
-            raise ValueError('radix_sort работает только с неотрицательными числами')
+            raise NegativeArgumentError('radix_sort работает только с неотрицательными числами')
         if x > max_value:
             max_value = x
     

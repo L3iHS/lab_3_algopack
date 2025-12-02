@@ -1,4 +1,5 @@
 from __future__ import annotations
+from src.errors import StackEmptyError
 
 class ListStack:
     def __init__(self) -> None:
@@ -12,7 +13,7 @@ class ListStack:
 
     def pop(self) -> int:
         if self.is_empty():
-            raise IndexError("Стек пуст")
+            raise StackEmptyError("Стек пуст")
         val = self._data.pop()
         if val == self._mins[-1]:
             self._mins.pop()
@@ -22,7 +23,7 @@ class ListStack:
 
     def peek(self) -> int:
         if self.is_empty():
-            raise IndexError("Стек пуст")
+            raise StackEmptyError("Стек пуст")
         return self._data[-1]
 
     def is_empty(self) -> bool:
@@ -33,32 +34,8 @@ class ListStack:
 
     def min(self) -> int:
         if self.is_empty():
-            raise IndexError("Стек пуст")
+            raise StackEmptyError("Стек пуст")
         return self._mins[-1]
-
-
-if __name__ == "__main__":
-    s = ListStack()
-    s.push(3)
-    s.push(5)
-    s.push(2)
-    s.push(2)
-    s.push(4)
-
-    print(s._data)  # [3, 5, 2, 2, 4]
-    print(s._mins)  # [3, 2, 2]
-    print(s.min(), end="\n\n")  # 2
-
-    print(s.pop())  # 4
-    print(s.min(), end="\n\n")  # 2
-
-    print(s.pop())  # 2
-    print(s.min(), end="\n\n")  # 2
-
-    print(s.pop())  # 2
-    print(s.min(), end="\n\n")  # 3
-
-
 
 
 class LinkedListStack:
@@ -89,7 +66,7 @@ class LinkedListStack:
     
     def pop(self) -> int:
         if self.is_empty():
-            raise IndexError('Стек пуст')
+            raise StackEmptyError('Стек пуст')
         val = self._head.value
         self._head = self._head.next
         self._size -= 1
@@ -97,10 +74,10 @@ class LinkedListStack:
     
     def peek(self) -> int:
         if self.is_empty():
-            raise IndexError('Стек пуст')
+            raise StackEmptyError('Стек пуст')
         return self._head.value
     
     def min(self) -> int:
         if self.is_empty():
-            raise IndexError('Стек пуст')
+            raise StackEmptyError('Стек пуст')
         return self._head.current_min

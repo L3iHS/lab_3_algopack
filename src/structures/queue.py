@@ -1,4 +1,5 @@
 from __future__ import annotations
+from src.errors import QueueEmptyError
 
 
 class ListQueue:
@@ -16,12 +17,12 @@ class ListQueue:
     
     def dequeue(self) -> int:
         if self.is_empty():
-            raise IndexError('Очередь пуста')
+            raise QueueEmptyError('Очередь пуста')
         return self._data.pop(0)
     
     def front(self) -> int:
         if self.is_empty():
-            raise IndexError('Очередь пуста')
+            raise QueueEmptyError('Очередь пуста')
         return self._data[0]
     
 
@@ -55,12 +56,12 @@ class LinkedListQueue:
     
     def front(self) -> int:
         if self.is_empty():
-            raise IndexError("Очередь пуста")
+            raise QueueEmptyError("Очередь пуста")
         return self._head.value
     
     def dequeue(self) -> int:
         if self.is_empty():
-            raise IndexError('Очередь пуста')
+            raise QueueEmptyError('Очередь пуста')
         value = self._head.value
         self._head = self._head.next
         if self._head is None:

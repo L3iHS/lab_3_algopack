@@ -1,8 +1,11 @@
+from src.errors import NonIntegerArgumentError, NegativeArgumentError
+
+
 def factorial(n: int) -> int:
     if not isinstance(n, int):
-        raise TypeError("n должно быть целым числом")
+        raise NonIntegerArgumentError("n должно быть целым числом")
     if n < 0:
-        raise ValueError('n должно быть не отрицательным')
+        raise NegativeArgumentError('n должно быть не отрицательным')
     result = 1
     for i in range(1, n + 1):
         result *= i
@@ -11,9 +14,9 @@ def factorial(n: int) -> int:
 
 def factorial_recursive(n: int) -> int:
     if not isinstance(n, int):
-        raise TypeError("n должно быть целым числом")
+        raise NonIntegerArgumentError("n должно быть целым числом")
     if n < 0:
-        raise ValueError('n должно быть не отрицательным')
+        raise NegativeArgumentError('n должно быть не отрицательным')
     if n <= 1:  # "<" на всякий, чтобы не ушел в рекурсию
         return 1
     return factorial_recursive(n - 1) * n
@@ -21,9 +24,9 @@ def factorial_recursive(n: int) -> int:
 
 def fibo_1(n: int) -> int:
     if not isinstance(n, int):
-        raise TypeError("n должно быть целым числом")
+        raise NonIntegerArgumentError("n должно быть целым числом")
     if n < 0:
-        raise ValueError('n должно быть не отрицательным')
+        raise NegativeArgumentError('n должно быть не отрицательным')
     a, b = 0, 1
     for _ in range(n):
         a, b = b, a + b
@@ -35,9 +38,9 @@ def fibo_1(n: int) -> int:
 
 def fibo_2(n: int, memory=None) -> int:
     if not isinstance(n, int):
-        raise TypeError("n должно быть целым числом")
+        raise NonIntegerArgumentError("n должно быть целым числом")
     if n < 0:
-        raise ValueError('n должно быть не отрицательным')
+        raise NegativeArgumentError('n должно быть не отрицательным')
     if memory is None:
         memory = {0: 0, 1: 1}
     # чтобы не словарь не был общим для всех вызовов
@@ -59,9 +62,9 @@ def fibo_2(n: int, memory=None) -> int:
 
 def fibo_recursive(n: int) -> int:
     if not isinstance(n, int):
-        raise TypeError("n должно быть целым числом")
+        raise NonIntegerArgumentError("n должно быть целым числом")
     if n < 0:
-        raise ValueError('n должно быть не отрицательным')
+        raise NegativeArgumentError('n должно быть не отрицательным')
     if n <= 1:
         return 1
     return fibo_recursive(n - 1) + fibo_recursive(n - 2)

@@ -1,3 +1,7 @@
+from src.errors import NonIntegerArgumentError
+
+
+
 def heap_sort(arr: list[int]) -> list[int]:
     if len(arr) <= 1:
         return arr.copy()
@@ -6,7 +10,7 @@ def heap_sort(arr: list[int]) -> list[int]:
 
     for x in a:
         if not isinstance(x, int):
-            raise TypeError('heap_sort принимает только целые значения')
+            raise NonIntegerArgumentError('heap_sort принимает только целые значения')
 
     n = len(a)
 
