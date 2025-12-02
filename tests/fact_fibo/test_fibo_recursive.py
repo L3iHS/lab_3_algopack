@@ -1,6 +1,6 @@
 import pytest
-from src.fact_fibo import fibo_recursive
-
+from src.fact_fibo.fibo_recursive import fibo_recursive
+from src.errors import NonIntegerArgumentError, NegativeArgumentError
 
 def test_fibo_recursive_shifted_sequence():
     assert fibo_recursive(0) == 1
@@ -12,7 +12,7 @@ def test_fibo_recursive_shifted_sequence():
 
 
 def test_fibo_recursive_errors():
-    with pytest.raises(ValueError):
+    with pytest.raises(NegativeArgumentError):
         fibo_recursive(-1)
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         fibo_recursive(2.5)

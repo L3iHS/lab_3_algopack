@@ -1,5 +1,6 @@
 import pytest
-from src.fact_fibo import fibo_1
+from src.fact_fibo.fibo_1 import fibo_1
+from src.errors import NegativeArgumentError, NonIntegerArgumentError
 
 
 def test_fibo_1_basic_sequence():
@@ -14,7 +15,7 @@ def test_fibo_1_basic_sequence():
 
 
 def test_fibo_1_errors():
-    with pytest.raises(ValueError):
+    with pytest.raises(NegativeArgumentError):
         fibo_1(-1)
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         fibo_1(1.5)

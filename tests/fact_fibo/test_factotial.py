@@ -1,5 +1,6 @@
 import pytest
-from src.fact_fibo import factorial
+from src.fact_fibo.factorial import factorial
+from src.errors import NonIntegerArgumentError, NegativeArgumentError
 
 
 def test_factorial_basic():
@@ -10,9 +11,9 @@ def test_factorial_basic():
 
 
 def test_factorial_errors():
-    with pytest.raises(ValueError):
+    with pytest.raises(NegativeArgumentError):
         factorial(-1)
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         factorial(3.5)
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         factorial("10")

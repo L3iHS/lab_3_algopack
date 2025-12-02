@@ -1,4 +1,6 @@
+import pytest
 from src.structures.stack import LinkedListStack
+from src.errors import StackEmptyError
 
 
 def test_empty_stack():
@@ -6,23 +8,14 @@ def test_empty_stack():
     assert s.is_empty()
     assert len(s) == 0
 
-    try:
+    with pytest.raises(StackEmptyError):
         s.pop()
-        assert False, "pop на пустом стеке должен кидать исключение"
-    except IndexError:
-        pass
 
-    try:
+    with pytest.raises(StackEmptyError):
         s.peek()
-        assert False, "peek на пустом стеке должен кидать исключение"
-    except IndexError:
-        pass
 
-    try:
+    with pytest.raises(StackEmptyError):
         s.min()
-        assert False, "min на пустом стеке должен кидать исключение"
-    except IndexError:
-        pass
 
 
 def test_push_pop_order_and_len():

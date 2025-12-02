@@ -1,5 +1,6 @@
-from src.structures.queue import LinkedListQueue
 import pytest
+from src.structures.queue import LinkedListQueue
+from src.errors import QueueEmptyError
 
 
 def test_empty_queue():
@@ -7,10 +8,10 @@ def test_empty_queue():
     assert q.is_empty()
     assert len(q) == 0
 
-    with pytest.raises(IndexError):
+    with pytest.raises(QueueEmptyError):
         q.dequeue()
 
-    with pytest.raises(IndexError):
+    with pytest.raises(QueueEmptyError):
         q.front()
 
 

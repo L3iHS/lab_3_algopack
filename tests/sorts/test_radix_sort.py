@@ -1,5 +1,6 @@
 import pytest
 from src.sorts.radix_sort import radix_sort
+from src.errors import NonIntegerArgumentError, NegativeArgumentError, InvalidParameterError
 
 
 def test_empty_list():
@@ -36,15 +37,15 @@ def test_random_examples():
 
 
 def test_error_non_int():
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         radix_sort([1, "2", 3])
 
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         radix_sort([1, 2.5, 3])
 
 
 def test_error_negative_values():
-    with pytest.raises(ValueError):
+    with pytest.raises(NegativeArgumentError):
         radix_sort([1, -5, 2])
 
 
@@ -75,7 +76,7 @@ def test_radix_different_bases_same_result():
 
 def test_invalid_base():
     arr = [1, 2, 3]
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidParameterError):
         radix_sort(arr, base=1)
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidParameterError):
         radix_sort(arr, base=0)

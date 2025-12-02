@@ -1,5 +1,6 @@
 import pytest
 from src.sorts.counting_sort import counting_sort
+from src.errors import NonIntegerArgumentError
 
 
 def test_empty_list():
@@ -35,10 +36,10 @@ def test_mixed_large_range():
 
 
 def test_type_error_on_non_int():
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         counting_sort([1, 2, 3.5])
 
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         counting_sort([1, "2", 3])
 
 

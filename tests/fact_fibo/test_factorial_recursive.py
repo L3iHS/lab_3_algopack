@@ -1,5 +1,6 @@
 import pytest
-from src.fact_fibo import factorial_recursive
+from src.fact_fibo.factorial_recursive import factorial_recursive
+from src.errors import NonIntegerArgumentError, NegativeArgumentError
 
 
 def test_factorial_recursive_basic():
@@ -10,7 +11,7 @@ def test_factorial_recursive_basic():
 
 
 def test_factorial_recursive_errors():
-    with pytest.raises(ValueError):
+    with pytest.raises(NegativeArgumentError):
         factorial_recursive(-10)
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         factorial_recursive(2.7)

@@ -1,5 +1,6 @@
 import pytest
 from src.sorts.heap_sort import heap_sort
+from src.errors import NonIntegerArgumentError
 
 
 def test_empty_list():
@@ -43,10 +44,10 @@ def test_random_examples():
 
 
 def test_error_on_non_int():
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         heap_sort([1, 2.5, 3])
 
-    with pytest.raises(TypeError):
+    with pytest.raises(NonIntegerArgumentError):
         heap_sort([1, "2", 3])
 
 

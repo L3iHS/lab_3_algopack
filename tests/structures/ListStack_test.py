@@ -1,5 +1,6 @@
-from src.structures.stack import ListStack
 import pytest
+from src.structures.stack import ListStack
+from src.errors import StackEmptyError
 
 
 def test_empty_stack():
@@ -7,13 +8,13 @@ def test_empty_stack():
     assert s.is_empty()
     assert len(s) == 0
 
-    with pytest.raises(IndexError):
+    with pytest.raises(StackEmptyError):
         s.pop()
 
-    with pytest.raises(IndexError):
+    with pytest.raises(StackEmptyError):
         s.peek()
 
-    with pytest.raises(IndexError):
+    with pytest.raises(StackEmptyError):
         s.min()
 
 

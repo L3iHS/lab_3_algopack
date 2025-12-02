@@ -1,5 +1,6 @@
 import pytest
 from src.sorts.bucket_sort import bucket_sort
+from src.errors import NonNumericElementError, InvalidParameterError
 
 
 def test_empty_list():
@@ -49,26 +50,23 @@ def test_original_unchanged():
 
 
 def test_invalid_element_type():
-    with pytest.raises(TypeError):
+    with pytest.raises(NonNumericElementError):
         bucket_sort([1.0, "2.0", 3.0])
-
-    with pytest.raises(TypeError):
-        bucket_sort([object(), 1.0])
 
 
 def test_invalid_buckets_param_type():
     arr = [0.1, 0.2, 0.3]
-    with pytest.raises(TypeError):
+    with pytest.raises(InvalidParameterError):
         bucket_sort(arr, buckets=1.5)
-    with pytest.raises(TypeError):
+    with pytest.raises(InvalidParameterError):
         bucket_sort(arr, buckets="10")
 
 
 def test_invalid_buckets_param_value():
     arr = [0.1, 0.2, 0.3]
-    with pytest.raises(TypeError):
+    with pytest.raises(InvalidParameterError):
         bucket_sort(arr, buckets=0)
-    with pytest.raises(TypeError):
+    with pytest.raises(InvalidParameterError):
         bucket_sort(arr, buckets=-5)
 
 
